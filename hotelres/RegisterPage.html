@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+ <head>
+  
+  <title>Register Page</title>
+  <link rel="stylesheet" type="text/css" href="register.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  <script>
+      function validateEmail(input)
+      {
+          var mailformat= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*\n\(\.\w{2,3})+$/;
+          if(input.value.match(mailformat))
+          {
+              document.form1.email.focus();
+              return true;
+          }
+          else
+          {
+              alert("Invalid Email");
+              document.form1.email.focus();
+              return false;
+          }
+      }
+      function validateContact(input)
+      {
+          var format=/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+          if(input.value.match(format))
+          {
+              return true;
+          }else
+          {
+              alert("Invalid Number..!");
+              return false;
+          }
+      }
+  </script>
+</head>
+<body >
+   <div class="contain">
+       
+         <form action="RegistrationP" name="Get">
+             <center><h1>Registration-Form</h1></center>
+                 <p>User Name </p>
+                 <input type="text" name="user"  id="user" placeholder="Enter User Name" autocomplete="off"><br>
+                 <span id="userid" style="color: red"></span>
+           
+                 <p>Contact Number  </p>
+                 <input type="number" name="phone"  id="phone" placeholder="Enter Contact Number" autocomplete="off"><br>
+                 <span id="phoneid"  style="color: red"></span>
+            
+                 <p>Email-Id </p>
+                 <input type="text" name="email" id="email" placeholder="Enter Email-Id" autocomplete="off"><br>
+                 <span id="emailid" style="color: red"></span>
+             
+                 <p>Password </p>
+                 <input type="password" name="password"  id="password" placeholder="Enter Password" autocomplete="off"><br>
+                 <span id="passwordid"  style="color: red"></span>
+            
+                 <p>Confirm Password </p>
+                 <input type="text" name="conpassword"  id="conpassword" placeholder="Re-Enter Password" autocomplete="off"><br>
+                 <span id="conpasswordid" style="color: red"></span>
+           	      
+           <br>  <input type="submit" name="Submit" value="Submit" style="background-color: green" onclick="return validation()">
+		   <br><a href ="LoginPage.html">Already have an New Account </a><br>
+         </form>  
+     
+    </div>
+    <script>
+        function validation()
+        {
+           // var a,b,c,d,e,f,g,h;
+         //   var user=       document.getElementById('user').value;
+         //   var phone=      document.getElementById('phone').value;
+            var email=      document.getElementById('email').value;
+            var password=   document.getElementById('password').value;
+            var conpassword=document.getElementById('conpassword').value;
+            
+        
+          if(document.getElementById('user').value=="")
+            {
+                document.getElementById('userid').innerHTML="**Please Enter User-Name";
+               
+                return false;
+            }
+            else{ a=true;}
+           if((document.getElementById('user').value.length <= 3) || (document.getElementById('user').value.length > 20))
+            {
+             document.getElementById('userid').innerHTML="**UserName length must be between 3 and 20";
+           
+            return false;
+            }else{ b=true;}
+           if(!isNaN(document.getElementById('user').value))
+            {
+                document.getElementById('userid').innerHTML="**Only Characters are allowed in user name";
+                
+            return false;
+            }else{ c=true;}
+           if((a && b && c))
+            {
+               document.getElementById('userid').innerHTML="";
+               
+            }
+           
+            if(document.getElementById('phone').value=="")
+            {
+                document.getElementById('phoneid').innerHTML="**Please Enter Phone Number";
+                  return false;
+            }else{ a=true;}
+           if(isNaN(document.getElementById('phone').value))
+            {
+                document.getElementById('phoneid').innerHTML="**Please Enter digits only";
+                  return false;
+            }else{ b=true;}
+           if(document.getElementById('phone').value.length!=10)
+            {
+             document.getElementById('phoneid').innerHTML="**Please Enter 10 Digit Phone Number only";
+                  return false;       
+            }else{ c=true;}
+            if((a && b && c))
+            {
+               document.getElementById('phoneid').innerHTML="";
+               
+            }
+            if(email=="")
+            {
+                document.getElementById('emailid').innerHTML="**Please Enter Email-ID";
+                  return false;
+            }else{ a=true;}
+           if(email.indexOf('@')==0)
+            {
+                document.getElementById('emailid').innerHTML="**Invalid Position of @ in Email-ID";
+                  return false;
+            }else{ b=true;} 
+           if((email.charAt(email.length-4)!='.') && (email.charAt(email.length-3)!='.'))
+            {
+                  document.getElementById('emailid').innerHTML="**Invalid Position of '.' in Email-ID";
+                  return false;
+            }else{ c=true;}
+           if((a && b && c))
+            {
+               document.getElementById('emailid').innerHTML="";
+            }
+           
+            if(password=="")
+            {
+                document.getElementById('passwordid').innerHTML="**Please Enter Password";
+                return false;
+            }else{ a=true;}
+			
+           if((password.length <= 5) || (password.length >= 15))
+            {
+             document.getElementById('passwordid').innerHTML="**Password length must be between 5 and 15 ";
+             return false;
+            }else{ b=true;}
+           if((a && b))
+            {
+               document.getElementById('passwordid').innerHTML="";
+            }
+            
+            
+            if(conpassword=="")
+            {
+                document.getElementById('conpasswordid').innerHTML="**Please Confirm Your Password";
+                  return false;
+            }else{ a=true;}
+           if(password!=conpassword)
+            {
+                document.getElementById('conpasswordid').innerHTML="**Passwords are not matching";
+                  return false;
+            }else{ b=true;}
+           if((a && b))
+            {
+               document.getElementById('conpasswordid').innerHTML="";
+            }
+            
+        }
+    </script>
+ </body>
+</html>

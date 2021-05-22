@@ -1,0 +1,49 @@
+<html>
+<head>
+<title> Login Page  </title>
+ <link rel="stylesheet" type="text/css" href="Style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+         function validateForm()
+         {
+             var nam=document.forms["myForm"]["un"].value;
+             var pass=document.forms["myForm"]["pw"].value;
+             if(nam=="" || nam==" ")
+             {
+                 alert("Name cannot be blank.");
+                 return false;
+             }
+             else if(pass.length<6)
+             {
+                 alert("password length must be atleast 6 characters");
+                 return false;
+             }      
+         }
+        </script>
+       
+</head>
+<body onload="myFunction()">
+    <div id="loader"></div>
+ <div class="box">
+   <img src="https://wallpapertag.com/wallpaper/full/2/b/6/126749-large-library-background-1920x1080.jpg" class="logo">
+   <br> <h2 align="center">Login Here </h2>
+	<form name="myForm" action="LoginP" onsubmit="return validateForm()">
+            <p>Username</p> <input type="text" name="un" placeholder="Enter username" autocomplete="off">
+            <p>Password</p><input type="password" name="pw" placeholder="Enter Password" autocomplete="off">
+	    <input type="submit" value="Login"><br> 
+	    <a href ="RegisterPage.html">Create an New Account </a><br>
+		<a href="#">Lost Your Password ?</a><br>
+	</form>
+ </div>
+    <script>
+      var preloader=document.getElementById('loader');
+      function myFunction()
+      {
+          preloader.style.display = 'none';
+           
+      }
+    </script>
+
+</body>
+</html>
